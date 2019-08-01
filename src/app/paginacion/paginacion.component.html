@@ -1,0 +1,130 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Desplazamiento</h1>
+    <li class="page-item disabled">
+        <a aria-label="Previous" class="page-Item " href="" tabindex="-1">
+            <span aria-hidden="true">
+        <input type="button" class="page-Item " value="1" (click)="ir()"  >
+        <input type="button" class="page-Item " value="2" (click)="ir() ">
+        <input type="button" class="page-Item " value="3" (click)="ir()">
+        <input type="button" class="page-Item " value="4" (click)="ir()">
+        <input type="button" class="page-Item " value="5" (click)="ir()">
+        <input type="button" class="page-Item " value="6" (click)="ir()">
+        <input type="button" class="page-Item " value="7" (click)="ir()">
+      </span>>></a>
+    </li>
+</body>
+
+</html> -->
+
+<body>
+    <div id="login-section">
+
+        <!-- {{registerForm.value | json  }} -->
+
+        <div class="login-box">
+            <h1>REGISTRARSE</h1>
+
+            <form [formGroup]="registerForm">
+                <div class="textbox">
+                    <input class="form-control" type="text" placeholder="Primer Nombre" formControlName="firstName">
+                    <!-- <a class="dynamic" type="button" (click)="addSecondName()">+</a>
+          <a class="dynamic" type="button" (click)="deleteSecondName(i)">-</a> -->
+                    <div formArrayName="secondName">
+                        <div *ngFor="let item of getSecondName.controls; let i=index" [formGroupName]="i">
+                            <input type="text" formControlName="name2" placeholder="Segundo Nombre (Opcional)">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span *ngIf="registerForm.controls['firstName'].errors?.required" id="errors"> Nombre obligatorio </span>
+                    <span *ngIf="registerForm.controls['firstName'].errors?.pattern" id="errors"> Nombre invalidos </span>
+                </div>
+
+                <div class="textbox">
+                    <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastnames">
+                </div>
+                <div>
+                    <span *ngIf="registerForm.controls['lastnames'].errors?.required" id="errors"> Apellidos obligatorios </span>
+                    <span *ngIf="registerForm.controls['lastnames'].errors?.pattern" id="errors"> Apellidos invalidos </span>
+                </div>
+
+                <div class="textbox">
+                    <input class="form-control" type="text" placeholder="Correo" formControlName="mail">
+                </div>
+                <div>
+                    <span *ngIf="registerForm.controls['mail'].errors?.required" id="errors"> Correo Electrónico obligatorio </span>
+                    <span *ngIf="registerForm.controls['mail'].errors?.pattern" id="errors"> Ingrese un correo electrónico valido </span>
+                </div>
+
+                <div class="textbox">
+                    <input class="form-control" type="text" placeholder="Celular" formControlName="phone">
+                    <select formControlName="phone2">
+            <option>Movistar</option>
+            <option>Claro</option>
+            <option>Tuenti</option>
+            <option>CNT</option>
+          </select>
+
+                    <div formArrayName="operadora">
+                        <div *ngFor="let item of getPhones.controls; let i=index " [formGroupName]="i">
+                            <input class="form-control" type="text" placeholder="Celular" formControlName="phone1">
+                            <select class="form-control" formControlName="phone2">
+                <option>Movistar</option>
+                <option>Claro</option>
+                <option>Tuenti</option>
+                <option>CNT</option>
+              </select>
+                        </div>
+                        <a class="dynamic" type="button" (click)="addPhones()">+</a>
+                        <a class="dynamic" type="button" (click)="deletePhones(i)">-</a>
+                    </div>
+                </div>
+
+                <div>
+                    <span *ngIf="registerForm.controls['phone'].errors?.required" id="errors"> Celular obligatorio </span>
+                    <span *ngIf="registerForm.controls['phone'].errors?.pattern" id="errors"> Celular invalido </span>
+                </div>
+                <button (click)="submit()" type="button" class="btn">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- <form [formGroup]="patternForm">
+      <input type="text" placeholder="correo" formControlName="example1"><br>
+      <span *ngIf="patternForm.controls['example1'].errors?.pattern"> Invalido1 </span>
+      <input type="text" placeholder="password" formControlName="example2"><br>
+      <span *ngIf="patternForm.controls['example2'].errors?.pattern"> Invalido2 </span>
+  </form> -->
+
+    <form [formGroup]="usuarioform">
+        <small>Nombre</small>
+        <input formControlName="nombre"><br>
+        <small>Cedula</small>
+        <input formControlName="cedula">
+
+        <div formArrayName="telefonos" *ngFor="let telefono of usuarioform.get('telefonos').controls; let i = index;">
+            <div [formGroupName]="i">
+                <input formGroupName="numero"><br>
+                <select formControlName="operadora">
+            <option value="999">Seleccione operadora...</option>
+            <option *ngFor="let operadoraClase of operadoraClases; let j = index;" value={{j}}>
+              {{operadoraClase}}
+            </option>
+          </select>
+                <button (click)="eliminarTelefonoForm(i)">X</button>
+            </div>
+        </div>
+        <button (click)="addTelefonoForm()">+</button>
+    </form>
+</body>

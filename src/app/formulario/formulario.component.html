@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <div class="contenedor-formulario">
+        <div class="wrap">
+            <form action="" class="formulario" name="formulario_registro" method="POST">
+                <div>
+                    <div class="input-group">
+                        <input type="text" id="nombre" name="nombre">
+                        <label for="nombre" class="label ">Nombre:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email">
+                        <label for="email" class="label">Correo:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="pass" name="pass">
+                        <label for="pass" class="label">DNI:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="pass2" name="pass2">
+                        <label for="pass2" class="label">Telefono:</label>
+                    </div>
+                    <div class="input-group radio ">
+                        <input type="radio" name="sexo" id="hombre" value="Hombre">
+                        <label for="hombre">Hombre</label>
+
+                        <input type="radio" name="sexo" id="mujer" value="Mujer">
+                        <label for="mujer">Mujer</label>
+                    </div>
+                    <div class="input-group checkbox">
+                        <input type="checkbox" name="terminos" id="terminos" value="true">
+                        <label for="terminos">Acepto los terminos y condiciones</label>
+                    </div>
+                    <input type="submit" id="btn-submit" value="Enviar">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

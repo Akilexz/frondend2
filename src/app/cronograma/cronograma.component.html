@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Listar</h1>
+    <table class="table">
+        <thead *ngFor="let item of table_congreso">
+            <th>{{item.id}}</th>
+            <th>{{item.nombre}}</th>
+            <th>{{item.direccion}}</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of respuesta | paginate:{itemsPerPage:7,currentPage:p} ">
+                <td>{{ item.id }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.direccion }}</td>
+                <td>
+                    <button value="Eliminar" title="Eliminar" class="form-control" (click)="crear()">crear
+              </button>
+                </td>
+                <td>
+                    <button value="Editar" title="Actualizar" class="form-control" (click)="editar(item.id)">editar
+                </button>
+
+                </td>
+                <td>
+                    <button value="Eliminar" title="Eliminar" class="form-control" (click)="borrar(item.id)"> borrar
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event" class="page-Item rojo"></pagination-controls>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+@mixin fondos($colors...) {
+    @if $fondos {
+        display: inline-block;
+        margin: 1em;
+        background-color: map-get($fondos-colors, nth ($colors, 1)) a {
+            text-decoration: none;
+        }
+        @if length($colors)>1 {
+            @for $i from 2 through length($colors) {
+                &.#{nth($colors,$i )} {
+                    background-color: map-get($fondos-colors, nth($colors, 1))
+                }
+            }
+        }
+    }
+}

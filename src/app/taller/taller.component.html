@@ -1,0 +1,33 @@
+<label>
+  Nombre:
+  <input type="text" [formControl]="name">
+  </label>
+<label>
+  Apellido:
+  <input type="text" [formControl]="lastname">
+  </label>
+<label>
+  Correo:
+  <input type="text" [formControl]="mail">
+  </label>
+<label>
+  Clave:
+  <input type="password" [formControl]="password">
+  </label>
+
+<p>
+    Value: {{ name.value }}
+</p>
+<p>
+    Value: {{ lastname.value }}
+</p>
+<p>
+    Value: {{ mail.value }}
+</p>
+<p>
+    Value: {{ password.value }}
+</p>
+
+<p>
+    <button (click)="updateName()">Update Name</button>
+</p>

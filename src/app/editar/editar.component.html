@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editar</title>
+</head>
+
+<body>
+    <h1>Editar</h1>
+    <div class="contenedor">
+        <label for="id">id</label>
+        <input type="number" id="id" [(ngModel)]="id" value="congreso.id" name="id" i=index>
+        <br>
+        <br>
+        <label for="nombre">nombre</label>
+        <input type="text" id="nombre" [(ngModel)]="congreso.nombre" name="nombre" i=index>
+        <br>
+        <br>
+        <label for="direccion">direccion</label>
+        <input type="text" id="direccion" [(ngModel)]="congreso.direccion" name="direccion" i=index>
+        <br>
+        <br>
+        <button value="Guardar" title="Guardar" (click)="editData()">Guardar
+          </button>
+    </div>
+</body>
+
+</html>
