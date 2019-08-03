@@ -11,16 +11,17 @@
 <body>
     <h1>Editar</h1>
     <div class="contenedor">
+        <!-- <app-editar [item]="item"></app-editar> -->
         <label for="id">id</label>
-        <input type="number" id="id" [(ngModel)]="id" value="congreso.id" name="id" i=index>
+        <input type="number" id="id" [(ngModel)]="actualizar" name="id">
         <br>
         <br>
         <label for="nombre">nombre</label>
-        <input type="text" id="nombre" [(ngModel)]="congreso.nombre" name="nombre" i=index>
+        <input type="text" id="nombre" [(ngModel)]="actualizar" name="nombre">
         <br>
         <br>
         <label for="direccion">direccion</label>
-        <input type="text" id="direccion" [(ngModel)]="congreso.direccion" name="direccion" i=index>
+        <input type="text" id="direccion" [(ngModel)]="actualizar" name="direccion">
         <br>
         <br>
         <button value="Guardar" title="Guardar" (click)="editData()">Guardar

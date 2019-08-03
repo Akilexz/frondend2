@@ -35,6 +35,7 @@ export class CrearComponent implements OnInit {
     };
     this.http.post(environment.API_URL + 'post', this.data).subscribe(resultado => {
       console.log(resultado);
+      alert ('se crearon los datos con exito');
       this.router.navigate(['cronograma']);
     });
   }

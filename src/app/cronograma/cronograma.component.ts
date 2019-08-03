@@ -1,7 +1,7 @@
 import { Congresos } from './../models/congreso';
 import { Router } from '@angular/router';
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cronograma',
@@ -71,15 +71,16 @@ getData = () => {
 crear() {
  this.router.navigate(['crear']);
  }
- editar = (id: number) => {
+ editar = (id: any) => {
   this.data = {
     tabla: this.tabla,
     idCongreso: id
   };
+  console.log(this.data);
   localStorage.removeItem('id');
-  localStorage.setItem('id', id.toString());
-  // const datos = {tablas: this.tabla, datos: [{id: this.congreso.id}]};
-  console.log('mensaje deseado', this.data);
+  localStorage.setItem('id', this.data.idCongreso.toString());
+  // // const datos = {tablas: this.tabla, datos: [{id: this.congreso.id}]};
+  // console.log('mensaje deseado', this.data);
   this.router.navigate(['editar']);
 }
 borrar = (id: number) => {
@@ -87,17 +88,23 @@ borrar = (id: number) => {
   this.data = {
     tabla: this.tabla,
     datoId: id
-};
+  };
+  const httpOptions = {
+        headers: new HttpHeaders({ 'Content-type': 'aplication/json' })
+    };
   console.log (this.data);
-  if (this.data != undefined) {
-    this.http.delete(environment.API_URL + 'delete', this.data).subscribe(data => {
-      console.log(this.data);
+  if (this.data !== undefined) {
+    this.http.post(environment.API_URL + 'delete', this.data).subscribe(resultado => {
+      console.log(resultado);
+      alert ('se han eliminado los datos');
         // this.router.navigate(['cronograma']);
       });
    }
 
   }
 }
+
+
   //  localStorage.removeItem('id');
   //  localStorage.setItem('id', this.congreso.id.toString());
   //  this.router.navigate(['ediatr']);
