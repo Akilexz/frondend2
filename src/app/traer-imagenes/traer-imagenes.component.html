@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>traer imagenes</title>
+</head>
+
+<body>
+    <h1>Traer Imagenes</h1>
+    <tr *ngFor="let item of respuesta">
+        <td>{{item.id}}</td>
+        <td><img width="100" height="100" src="data:image/jpg;base64,{{item.nombre}}"></td>
+    </tr>
+</body>
+
+</html>

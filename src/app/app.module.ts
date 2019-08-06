@@ -18,6 +18,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { FormularioComponent } from './formulario/formulario.component';
 import { CrearComponent } from './crear/crear.component';
 import { EditarComponent } from './editar/editar.component';
+import { ImagenesComponent } from './imagenes/imagenes.component';
+import { TraerImagenesComponent } from './traer-imagenes/traer-imagenes.component';
 
 
 
@@ -34,7 +36,9 @@ import { EditarComponent } from './editar/editar.component';
     PaginacionComponent,
     FormularioComponent,
     CrearComponent,
-    EditarComponent
+    EditarComponent,
+    ImagenesComponent,
+    TraerImagenesComponent
   ],
   imports: [
     BrowserModule,

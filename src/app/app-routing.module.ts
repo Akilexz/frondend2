@@ -1,3 +1,6 @@
+import { TraerImagenesComponent } from './traer-imagenes/traer-imagenes.component';
+import { ImagenesComponent } from './imagenes/imagenes.component';
+
 import { EditarComponent } from './editar/editar.component';
 
 import { FormularioComponent } from './formulario/formulario.component';
@@ -25,7 +28,9 @@ const routes: Routes = [
   {path: 'paginacion', component: PaginacionComponent},
   {path: 'formulario', component: FormularioComponent},
   {path: 'crear', component: CrearComponent},
-  {path: 'editar', component: EditarComponent}
+  {path: 'editar', component: EditarComponent},
+  {path: 'imagenes', component: ImagenesComponent},
+  {path: 'traer', component: TraerImagenesComponent}
 ];
 
 @NgModule({

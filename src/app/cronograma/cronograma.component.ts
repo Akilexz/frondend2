@@ -76,8 +76,8 @@ crear() {
     tabla: this.tabla,
     idCongreso: id
   };
-  console.log(this.data);
-  localStorage.removeItem('id');
+  // console.log(this.data);
+  // localStorage.removeItem('id');
   localStorage.setItem('id', this.data.idCongreso.toString());
   // // const datos = {tablas: this.tabla, datos: [{id: this.congreso.id}]};
   // console.log('mensaje deseado', this.data);
@@ -98,38 +98,9 @@ borrar = (id: number) => {
       console.log(resultado);
       alert ('se han eliminado los datos');
         // this.router.navigate(['cronograma']);
+      window.location.reload();
       });
    }
 
   }
 }
-
-
-  //  localStorage.removeItem('id');
-  //  localStorage.setItem('id', this.congreso.id.toString());
-  //  this.router.navigate(['ediatr']);
-//  borrar = () => {
-//   this.data = {
-//     tabla: this.tabla,
-//     datos: this.congreso
-//   };
-//   if (this.congreso === undefined) {return; }
-//   this.http.delete(environment.API_URL + 'delete', this.data).subscribe(resultado => {
-//     console.log(resultado);
-//   });
-
-  //  const datos = {tabla: this.tablas[this.tablaSeleccionada], id: this.datoUnitario};
-  //  this.http.delete(environment.API_URL + 'delete', datos).subscribe(data => {
-  //    console.log ('datos eliminados');
-  //  });
-  //  this.data = {
-  //    tabla: this.congreso,
-  //    id: this.datoUnitario
-  //  };
-  //  if (this.congreso === undefined) {return; }
-  //  this.http.delete(environment.API_URL + 'delete', this.data).subscribe(resultado => {
-  //    console.log(resultado);
-  //  });
-
-  // }
-

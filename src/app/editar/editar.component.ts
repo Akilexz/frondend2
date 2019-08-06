@@ -4,6 +4,7 @@ import { Congresos } from './../models/congreso';
 import { Router } from '@angular/router';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -17,13 +18,20 @@ export class EditarComponent implements OnInit {
   tabla: string;
   congreso: Congresos  ;
   recuperacion: string;
+  // clienteForm: FormGroup;
+  editarForm: FormGroup;
+  id: number;
+  nombre: string;
+  direccion: string;
+  lol: FormGroup;
   // stablas: any[];
   httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'aplication/json' })
 };
   // id: any;
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
 
@@ -37,15 +45,29 @@ export class EditarComponent implements OnInit {
     };
     // this.tablas = ['id', 'nombre', 'direccion'];
     this.actualizar();
+    this.formularioEdit();
   }
-  editData = () => {
+  formularioEdit() {
+    this.editarForm = this.fb.group({
+      nombre: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+  });
+}
+  editData = (id) => {
+    const nombre = this.editarForm.get('nombre').value;
+    const direccion = this.editarForm.get('direccion').value;
     this.data = {
       tabla: this.tabla,
-      datoId: [ this.congreso]
+      datoId: [ {
+        id:id,
+        nombre:nombre,
+        direccion:direccion
+      }]
     };
     if (this.data === null) {
       console.log ('no gracias');
     } else {
+      console.log(this.data)
     // tslint:disable-next-line:no-shadowed-variable
     // this.data.forEach((element) => {
       // console.log(element);
@@ -61,10 +83,13 @@ export class EditarComponent implements OnInit {
   }
   actualizar() {
     const id = localStorage.getItem('id');
-    console.log(id);
-    // this.http.get(environment.API_URL + `get?tabla=${this.tabla}`).subscribe(resultado => {
-    //   console.log(resultado);
-    // });
+    const tabla = 'congreso';
+    this.http.get<any>(environment.API_URL + `routebyid?tabla=${tabla}&id=` + id).subscribe(data => {
+      this.respuesta = data.datos;
+      console.log(this.respuesta);
+      console.log(id);
+      console.log(data);
+    });
   }
 }
 // }

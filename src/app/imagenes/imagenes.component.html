@@ -1,0 +1,7 @@
+<div>
+    <label>id</label>
+    <input type="number" [(ngModel)]="imagen.id">
+    <label>imagen</label>
+    <input type="file" (change)="handleFileSelect($event)" [(ngModel)]="imagen" name="imagen">
+</div>
+<button type="button" (click)="addImagePru(imagen.id)">Enviar</button>

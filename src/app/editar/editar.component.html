@@ -10,23 +10,26 @@
 
 <body>
     <h1>Editar</h1>
-    <div class="contenedor">
-        <!-- <app-editar [item]="item"></app-editar> -->
-        <label for="id">id</label>
-        <input type="number" id="id" [(ngModel)]="actualizar" name="id">
-        <br>
-        <br>
-        <label for="nombre">nombre</label>
-        <input type="text" id="nombre" [(ngModel)]="actualizar" name="nombre">
-        <br>
-        <br>
-        <label for="direccion">direccion</label>
-        <input type="text" id="direccion" [(ngModel)]="actualizar" name="direccion">
-        <br>
-        <br>
-        <button value="Guardar" title="Guardar" (click)="editData()">Guardar
-          </button>
-    </div>
+    <form [formGroup]="editarForm">
+        <div class="contenedor">
+            <tr *ngFor="let item of respuesta">
+                <!-- <label for=" id ">id</label>
+                <input type="number " value="{{ item.id }}"> -->
+                <br>
+                <br>
+                <label for="nombre ">nombre</label>
+                <input formControlName="nombre" type="text " id="nombre " name="nombre " [(ngModel)]="item.nombre">
+                <br>
+                <br>
+                <label for="direccion ">direccion</label>
+                <input formControlName="direccion" type="text " id="direccion " name="direccion" [(ngModel)]="item.direccion">
+                <br>
+                <br>
+                <button value="Guardar " title="Guardar " (click)="editData(item.id) ">Guardar
+        </button>
+            </tr>
+        </div>
+    </form>
 </body>
 
 </html>
